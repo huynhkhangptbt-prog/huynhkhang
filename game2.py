@@ -63,13 +63,21 @@ if st.session_state.screen == "start":
 
     name = st.text_input("👤 Nhập họ tên đầy đủ:")
 
-    if st.button("🚀 BẮT ĐẦU"):
-        if name == "":
-            st.warning("Nhập tên đã!")
-        else:
-            st.session_state.name = name
-            st.session_state.screen = "game"
-            st.session_state.saved = False
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("🚀 BẮT ĐẦU"):
+            if name == "":
+                st.warning("Nhập tên đã!")
+            else:
+                st.session_state.name = name
+                st.session_state.screen = "game"
+                st.session_state.saved = False
+                st.rerun()
+
+    with col2:
+        if st.button("🏆 XEM BẢNG XẾP HẠNG"):
+            st.session_state.screen = "leaderboard"
             st.rerun()
 
 # ===== GAME =====
@@ -161,4 +169,18 @@ elif st.session_state.screen == "result":
         st.session_state.hate = ""
         st.session_state.screen = "start"
         st.session_state.saved = False
+        st.rerun()
+
+# ===== LEADERBOARD ONLY SCREEN =====
+elif st.session_state.screen == "leaderboard":
+    st.title("🏆 BẢNG XẾP HẠNG")
+
+    if os.path.exists(FILE):
+        df = pd.read_csv(FILE)
+        st.dataframe(df, use_container_width=True)
+    else:
+        st.info("Chưa có dữ liệu")
+
+    if st.button("🔙 QUAY LẠI"):
+        st.session_state.screen = "start"
         st.rerun()
