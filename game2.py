@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-st.set_page_config(page_title="Quiz Game Pro", layout="centered")
+st.set_page_config(page_title="Bạn hỉu Kheng như thé nèo :33", layout="centered")
 
 # ===== CSS =====
 st.markdown("""
@@ -59,9 +59,9 @@ FILE = "leaderboard.csv"
 
 # ===== START =====
 if st.session_state.screen == "start":
-    st.title("🎮 QUIZ GAME DZUI DẺ")
+    st.title("🎮 Bạn hỉu Kheng như thé nào?")
 
-    name = st.text_input("👤 Nhập tên:")
+    name = st.text_input("👤 Nhập họ tên đầy đủ:")
 
     if st.button("🚀 BẮT ĐẦU"):
         if name == "":
