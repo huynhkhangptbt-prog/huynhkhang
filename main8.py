@@ -4,9 +4,11 @@ import os
 # Cấu hình trang
 st.set_page_config(page_title="Music Profiles", layout="wide")
 
-# Hàm lấy đường dẫn file từ Desktop
-def get_desktop_file(file_name):
-    return os.path.join(os.path.expanduser("~"), "Desktop", file_name)
+# SỬA TẠI ĐÂY: Khi deploy, ta bỏ hàm tìm Desktop và dùng file tại chỗ
+# Lưu ý: Bạn cần copy 4 file mp3 vào thư mục chứa code này
+def get_audio_file(file_name):
+    # Trả về tên file trực tiếp để Streamlit đọc từ thư mục dự án
+    return file_name
 
 st.title("🎧 Hệ thống Nghệ sĩ & MV yêu thích")
 
@@ -28,10 +30,10 @@ with tabs[0]:
     with col2:
         st.header("MV & Audio")
         st.subheader("🎵 Bài hát: MỘNG YU")
-        # Thêm key để reset khi chuyển tab
-        st.audio(get_desktop_file("MỘNG YU.mp3"))
+        # Sửa: Gọi file trực tiếp từ thư mục dự án
+        st.audio(get_audio_file("MỘNG YU.mp3"))
         st.subheader("🎬 MV: ex's hate me")
-        st.video("https://www.youtube.com/watch?v=95ahbau-rJk", format="video/mp4")
+        st.video("https://www.youtube.com/watch?v=95ahbau-rJk")
 
 # --- TAB 2: SƠN TÙNG M-TP ---
 with tabs[1]:
@@ -47,7 +49,7 @@ with tabs[1]:
     with col2:
         st.header("MV & Audio")
         st.subheader("🎵 Bài hát: CHẠY NGAY ĐI")
-        st.audio(get_desktop_file("CHẠY NGAY ĐI.mp3"))
+        st.audio(get_audio_file("CHẠY NGAY ĐI.mp3"))
         st.subheader('🎬 MV: ĐỪNG LÀM TRÁI TIM ANH ĐAU')
         st.video("https://www.youtube.com/watch?v=abPmZCZZrFA")
 
@@ -65,7 +67,7 @@ with tabs[2]:
     with col2:
         st.header("MV & Audio")
         st.subheader("🎵 Bài hát: Ngày Khác Lạ")
-        st.audio(get_desktop_file("Ngày Khác Lạ.mp3"))
+        st.audio(get_audio_file("Ngày Khác Lạ.mp3"))
         st.subheader('🎬 MV: Vị nhà')
         st.video("https://www.youtube.com/watch?v=Hqmbo0ROBQw")
 
@@ -83,6 +85,6 @@ with tabs[3]:
     with col2:
         st.header("MV & Audio")
         st.subheader("🎵 Bài hát: Để Mị Nói Cho Mà Nghe")
-        st.audio(get_desktop_file("Để Mị Nói Cho Mà Nghe.mp3"))
+        st.audio(get_audio_file("Để Mị Nói Cho Mà Nghe.mp3"))
         st.subheader("🎬 MV: Kẻ Cắp Gặp Bà Già")
         st.video("https://www.youtube.com/watch?v=bA1MhSK8wBE")
