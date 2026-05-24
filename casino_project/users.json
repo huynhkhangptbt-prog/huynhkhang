@@ -1,0 +1,10 @@
+{
+  "admin": {
+    "password": "123",
+    "balance": 1000,
+    "level": 1,
+    "exp": 0,
+    "win_streak": 0,
+    "history": []
+  }
+}
